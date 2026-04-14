@@ -109,7 +109,8 @@ pipeline {
             steps {
                 echo 'Cleaning up local Docker images...'
                 sh "docker rmi -f shirishmungikar/bookmytrip:latest || true"
-                sh "docker rmi -f *bookmytrip:latest || true"
+                sh "docker rmi -f bookmytrip:latest || true"
+                sh "docker rmi -f 794531973659.dkr.ecr.ap-south-1.amazonaws.com/bookmytrip:latest || true"
                 echo 'Local Docker images deleted successfully!'
             }
         }
