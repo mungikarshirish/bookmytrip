@@ -31,9 +31,9 @@ pipeline {
             }
             steps {
                 echo 'Starting SonarQube Code Quality Scan...'
-//*                withSonarQubeEnv('sonar-server') {
+/*                withSonarQubeEnv('sonar-server') {
                     sh 'mvn sonar:sonar' 
-*//
+*/
                 }
                 echo 'SonarQube Scan Completed. Checking Quality Gate...'
                 timeout(time: 10, unit: 'MINUTES') {
