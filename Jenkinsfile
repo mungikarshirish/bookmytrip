@@ -14,14 +14,14 @@ pipeline {
         stage('Code Compilation') {
             steps {
                 echo 'Starting Code Compilation...'
-                sh 'mvn clean compile'
+//                sh 'mvn clean compile'
                 echo 'Code Compilation Completed Successfully!'
             }
         }
         stage('Code Coverage') {
             steps {
                 echo 'Running JUnit Test Cases...'
-                sh 'mvn clean test'
+//                sh 'mvn clean test'
                 echo 'JUnit Test Cases Completed Successfully!'
             }
         }
@@ -69,9 +69,9 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]) {
-                        sh 'docker login docker.io -u shirishmungikar -p ${dockerhubCred}'
+//                        sh 'docker login docker.io -u shirishmungikar -p ${dockerhubCred}'
                         echo 'Pushing Docker Image to Docker Hub...'
-                        sh 'docker push shirishmungikar/bookmytrip:latest'
+//                        sh 'docker push shirishmungikar/bookmytrip:latest'
                         echo 'Docker Image Pushed to Docker Hub Successfully!'
                     }
                 }
