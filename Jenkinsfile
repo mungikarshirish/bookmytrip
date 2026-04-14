@@ -27,12 +27,12 @@ pipeline {
         }
         stage('Code Quality') {
             environment {
-                //scannerHome = tool 'qube'
+//                scannerHome = tool 'qube'
             }
             steps {
                 echo 'Starting SonarQube Code Quality Scan...'
-                //withSonarQubeEnv('sonar-server') {
-                    //sh 'mvn sonar:sonar'
+                withSonarQubeEnv('sonar-server') {
+                    sh 'mvn sonar:sonar'
                 }
                 echo 'SonarQube Scan Completed. Checking Quality Gate...'
                 //timeout(time: 10, unit: 'MINUTES') {
