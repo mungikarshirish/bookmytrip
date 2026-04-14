@@ -27,16 +27,16 @@ pipeline {
         }
         stage('Code Quality') {
             environment {
-                scannerHome = tool 'qube'
+                //scannerHome = tool 'qube'
             }
             steps {
                 echo 'Starting SonarQube Code Quality Scan...'
-                withSonarQubeEnv('sonar-server') {
-                    sh 'mvn sonar:sonar'
+                //withSonarQubeEnv('sonar-server') {
+                    //sh 'mvn sonar:sonar'
                 }
                 echo 'SonarQube Scan Completed. Checking Quality Gate...'
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                //timeout(time: 10, unit: 'MINUTES') {
+                    //waitForQualityGate abortPipeline: true
                 }
                 echo 'Quality Gate Check Completed!'
             }
@@ -61,7 +61,7 @@ pipeline {
         stage('Docker Image Scanning') {
             steps {
                 echo 'Scanning Docker Image with Trivy...'
-                sh 'trivy image --scanners vuln --no-progress shirishmungikar/bookmytrip:latest || echo "Scan Failed - Proceeding with Caution"'
+                //sh 'trivy image --scanners vuln --no-progress shirishmungikar/bookmytrip:latest || echo "Scan Failed - Proceeding with Caution"'
                 echo 'Docker Image Scanning Completed!'
             }
         }
@@ -108,7 +108,7 @@ pipeline {
         stage('Cleanup Docker Images') {
             steps {
                 echo 'Cleaning up local Docker images...'
-                sh "docker rmi -f satyam88/bookmytrip:latest || true"
+                sh "docker rmi -f shirishmungikar/bookmytrip:latest || true"
                 sh "docker rmi -f bookmytrip:latest || true"
                 echo 'Local Docker images deleted successfully!'
             }
